@@ -1,0 +1,3 @@
+/home/vi/Рабочий стол/project/inference_yolov8/build/CMakeFiles/main.dir
+/home/vi/Рабочий стол/project/inference_yolov8/build/CMakeFiles/edit_cache.dir
+/home/vi/Рабочий стол/project/inference_yolov8/build/CMakeFiles/rebuild_cache.dir
