@@ -9,10 +9,18 @@ include_directories(headers)
 
 find_package(OpenCV REQUIRED)
 
+#if you don't used jetson nano for PC 
 include_directories(
     /usr/include/x86_64-linux-gnu
     /usr/local/cuda/include
 )
+
+#if you used jetson nano 
+# include_directories(
+#    /usr/lib/aarch64-linux-gnu
+#    /usr/local/cuda/include
+#)
+
 
 link_directories(/usr/local/cuda/lib64)
 
