@@ -125,9 +125,10 @@ int main(){
 
             cv::putText(inputImg,std::to_string(fps) , cv::Point((imgParams[0]/2), (imgParams[1]/2)), cv::FONT_HERSHEY_SIMPLEX, 1, (255,255,0), 4);
             cv::imshow("Result", inputImg);
-            if ((char)cv::waitKey(1) > 0){
+            int  key = cv::waitKey(2);
+            if (key == 'q'){
                 break;
-            } 
+            }    
         }
         else {
             std::cout << "No image for analyze" << std::endl;
