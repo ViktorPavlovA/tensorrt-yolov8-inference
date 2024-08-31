@@ -2,6 +2,6 @@
 
 Example on COCO dataset
 
-PC 20 FPS
+PC CPU: i5 -13gen + GPU: 4070 nvidia - 20 FPS (down speed because of webcamera)
 
 # TO DO POSTPROCESSING ON CUDA
