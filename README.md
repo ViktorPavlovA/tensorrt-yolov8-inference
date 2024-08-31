@@ -1,4 +1,4 @@
-# Inference Yolov8n on c++ 
+# Inference Yolov8n on c++ tensorRT-8.6.1
 
 Example on COCO dataset
 
