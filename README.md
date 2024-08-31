@@ -1,7 +1,7 @@
-# Inference Yolov8n on c++ tensorRT-8.6.1
+# Inference Yolov8n on c++ tensorRT 10.3
 
 Example on COCO dataset
 
-FPS Jetson Nano : 8.8 - 9 fps
+PC 20 FPS
 
 # TO DO POSTPROCESSING ON CUDA

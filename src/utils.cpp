@@ -63,7 +63,8 @@ void preprocessImage(cv::Mat& img_original, int inputWidth, int inputHeight, flo
 /// @return void;
 void performInference(nvinfer1::IExecutionContext* context, void* buffers[], int batchSize) {
     // Launch the inference
-    context->execute(batchSize, buffers);
+    // context->execute(batchSize, buffers);
+    context->executeV2(buffers);
 }
 
 
@@ -99,8 +100,8 @@ nvinfer1::ICudaEngine* loadEngine(const std::string &engineFile, nvinfer1::ILogg
 
     // Create a TensorRT runtime and deserialize the engine
     nvinfer1::IRuntime *runtime = nvinfer1::createInferRuntime(logger);
-    nvinfer1::ICudaEngine *engine = runtime->deserializeCudaEngine(serializedEngine, size, nullptr);
-    
+    // nvinfer1::ICudaEngine *engine = runtime->deserializeCudaEngine(serializedEngine, size, nullptr);
+    nvinfer1::ICudaEngine *engine = runtime->deserializeCudaEngine(serializedEngine, size);
     // Clean up the serialized engine after deserialization
     delete[] serializedEngine;
 

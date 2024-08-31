@@ -81,7 +81,7 @@ int main(){
     nvinfer1::IExecutionContext *context = cudaEngine->createExecutionContext();
     if (!context) {
         std::cerr << "Failed to create execution context!" << std::endl;
-        cudaEngine->destroy(); // Clean up the engine if context creation fails
+        // cudaEngine->destroy(); // Clean up the engine if context creation fails
         return -1; // Exit with error
     }
     std::cout << "Execution context created successfully!" << std::endl;
@@ -136,8 +136,8 @@ int main(){
         timeStart = timeEnd;
 
     }
-    context->destroy(); // Destroy the context
-    cudaEngine->destroy(); // Destroy the engine
+    // context->destroy(); // Destroy the context
+    // cudaEngine->destroy(); // Destroy the engine
     cudaFree(d_input); // free the input buffer
     cudaFree(d_output);// free the output buffer
     std::cout << "Cleanup done." << std::endl;
