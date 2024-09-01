@@ -12,17 +12,6 @@ Definition of supply methods
 #include <algorithm>
 #include <NvInfer.h>
 
-/// @brief function for get params of img
-/// @param cv::Mat& img - img
-/// @return std::vector<int> - [w,h,channels];
-std::vector<int> getImgParameters(cv::Mat& img);
-
-
-/// @brief function for get ratio of img;
-/// @param std::vector<int>& imgParams - vector param of img
-/// @return std::vector<float> - [ratioW, ratioH];
-std::vector<float> getRatioWH(std::vector<int>& imgParams, int inputWidth, int inputHeight);
-
 
 
 /// @brief function for preprocessing image;
@@ -77,4 +66,4 @@ void FilterByConfidence(int classesNumber, int vectorSize,float transOutputVecto
 /// @brief - function for get final vector: x1,y1,x2,y2,conf,class_value;
 /// @param auto& finalVector,auto transOutputVector, auto& indexes, auto& ratio, auto& class_ind, auto& conf_vector ; 
 /// @return void;
-void finalVectorMaker(std::vector<std::vector<float>>& finalVector,float transOutputVector[1][8400][84], std::vector<int>& indexes, std::vector<float>& ratio, std::vector<float>& class_ind, std::vector<float>& conf_vector);
+void finalVectorMaker(std::vector<std::vector<float>>& finalVector,float transOutputVector[1][8400][84], std::vector<int>& indexes, float* ratio, std::vector<float>& class_ind, std::vector<float>& conf_vector);

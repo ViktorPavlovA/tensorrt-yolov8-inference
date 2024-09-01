@@ -10,6 +10,8 @@
 #include <chrono>
 
 #include "headers/logger.h"
+#include "headers/getImgParameters.h"
+#include "headers/getRatioWH.h"
 #include "headers/config.h"
 #include "headers/utils.h"
 #include "headers/coco.h"
@@ -43,7 +45,8 @@ int main(){
     // CHANGE THIS PLACE
     float outputVector[1][84][8400];
     float transOutputVector[1][8400][84];
-
+    int imgParams[3]; // width, height, channels
+    float ratio[2]; //Kw,Kh
     
     std::vector<int> indexes;
     std::vector<float> class_ind;
@@ -68,8 +71,8 @@ int main(){
             break;
         }
     }
-    std::vector<int> imgParams = getImgParameters(inputImg);
-    std::vector<float> ratio = getRatioWH(imgParams,parameters.inputWidth,parameters.inputHeight);
+    getImgParameters(inputImg, &imgParams[0]);
+    getRatioWH(&imgParams[0],&ratio[0],parameters.inputWidth,parameters.inputHeight);
 
     nvinfer1::ICudaEngine *cudaEngine = loadEngine(enginePath,logger);
     if (cudaEngine == nullptr){
@@ -108,7 +111,7 @@ int main(){
 
             FilterByConfidence(parameters.classesNumber, parameters.vectorSize,transOutputVector, indexes, class_ind, conf_vector, parameters.conf);
 
-            finalVectorMaker(finalVector,transOutputVector, indexes, ratio, class_ind, conf_vector);
+            finalVectorMaker(finalVector,transOutputVector, indexes, &ratio[0], class_ind, conf_vector);
 
             filterByIoU(finalVector, parameters.iou_threshold);
             

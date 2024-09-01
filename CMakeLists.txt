@@ -24,6 +24,9 @@ include_directories(
 
 link_directories(/usr/local/cuda/lib64)
 
-add_executable(main main.cpp src/logger.cpp src/utils.cpp)
+add_executable(main main.cpp src/logger.cpp 
+                             src/utils.cpp 
+                             src/getImgParameters.cpp 
+                             src/getRatioWH.cpp)
 
 target_link_libraries(main nvinfer cudart ${OpenCV_LIBS})
