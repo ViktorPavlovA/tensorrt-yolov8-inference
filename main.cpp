@@ -9,6 +9,7 @@
 #include <cuda_runtime_api.h>
 #include <chrono>
 
+#include "headers/FilterByConfidenceCuda.h"
 #include "headers/logger.h"
 #include "headers/config.h"
 #include "headers/utils.h"
@@ -106,7 +107,7 @@ int main(){
             transposeOutputVector(parameters.classesNumber,parameters.vectorSize,outputVector, transOutputVector);
             
 
-            FilterByConfidence(parameters.classesNumber, parameters.vectorSize,transOutputVector, indexes, class_ind, conf_vector, parameters.conf);
+            FilterByConfidenceCuda(parameters.classesNumber, parameters.vectorSize,transOutputVector, indexes, class_ind, conf_vector, parameters.conf);
 
             finalVectorMaker(finalVector,transOutputVector, indexes, ratio, class_ind, conf_vector);
 
