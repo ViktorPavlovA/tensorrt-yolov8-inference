@@ -8,31 +8,6 @@
 #include "NvInfer.h"
 #include <cuda_runtime_api.h>
 
-// /// @brief function for get params of img
-// /// @param cv::Mat& img - img
-// /// @return std::vector<int> - [w,h,channels];
-// std::vector<int> getImgParameters(cv::Mat& img) {
-//     int width = img.cols;
-//     int height = img.rows;
-//     int channels = img.channels();
-//     std::vector<int> imgParams = {width, height, channels};
-//     return imgParams;
-// }
-
-
-
-// /// @brief function for get ratio of img;
-// /// @param std::vector<int>& imgParams - vector param of img
-// /// @return std::vector<float> - [ratioW, ratioH];
-// std::vector<float> getRatioWH(std::vector<int>& imgParams, int inputWidth, int inputHeight) {
-//     float ratioW = imgParams[0] /(float)inputWidth;
-//     float ratioH = imgParams[1] /(float)inputHeight ;
-//     std::vector<float> ratio = {ratioW, ratioH};
-//     return ratio;
-
-// }
-
-
 
 /// @brief function for preprocessing image;
 /// @param cv::Mat& img_original - original img, int inputWidth, int inputHeight , float* input_vector

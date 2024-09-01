@@ -1,9 +1,9 @@
 
 cmake_minimum_required(VERSION 3.10)
-project(Yolov8)
+project(Yolov8 LANGUAGES CXX CUDA)
 
+set(CMAKE_CUDA_STANDARD 14)
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(headers)
 
@@ -23,10 +23,11 @@ include_directories(
 
 
 link_directories(/usr/local/cuda/lib64)
+add_library(module SHARED src/FilterByConfidenceCuda.cu)
 
 add_executable(main main.cpp src/logger.cpp 
                              src/utils.cpp 
                              src/getImgParameters.cpp 
                              src/getRatioWH.cpp)
 
-target_link_libraries(main nvinfer cudart ${OpenCV_LIBS})
+target_link_libraries(main nvinfer cudart ${OpenCV_LIBS} module)

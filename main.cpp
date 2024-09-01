@@ -15,6 +15,7 @@
 #include "headers/config.h"
 #include "headers/utils.h"
 #include "headers/coco.h"
+#include "headers/FilterByConfidenceCuda.h"
 
 
 int main(){
@@ -43,8 +44,8 @@ int main(){
     std::chrono::duration<double> duration ;
 
     // CHANGE THIS PLACE
-    float outputVector[1][84][8400];
-    float transOutputVector[1][8400][84];
+    float outputVector[1][84][8400] = {{{0}}};;
+    float transOutputVector[1][8400][84] = {{{0}}};;
     int imgParams[3]; // width, height, channels
     float ratio[2]; //Kw,Kh
     
@@ -109,7 +110,7 @@ int main(){
             transposeOutputVector(parameters.classesNumber,parameters.vectorSize,outputVector, transOutputVector);
             
 
-            FilterByConfidence(parameters.classesNumber, parameters.vectorSize,transOutputVector, indexes, class_ind, conf_vector, parameters.conf);
+            FilterByConfidenceCuda(parameters.classesNumber, parameters.vectorSize,transOutputVector, indexes, class_ind, conf_vector, parameters.conf);
 
             finalVectorMaker(finalVector,transOutputVector, indexes, &ratio[0], class_ind, conf_vector);
 
